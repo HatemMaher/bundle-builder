@@ -12,28 +12,29 @@ const VariantButton = ({ image, name, selected, onClick }: VariantButtonProps) =
       onClick={onClick}
       className={`
         flex
-        h-[26px]
-        min-w-[60px]
+        h-[24px] 
         items-center
         gap-[6px]
-        rounded-[4px]
-        border-[1.5px]
-        px-[6px]
+        rounded-full /* Figma uses full pill shapes, not slightly rounded corners */
+        border-[1px]
+        py-[2px]
+        px-[8px]
         transition-all
         duration-200
         ${
           selected
-            ? "border-[#0AA288] bg-[#F2FFFC] shadow-sm"
+            ? "border-[#1F1F1F] bg-white shadow-sm" /* Black border for selected state per Figma */
             : "border-[#E4E9EF] bg-white hover:border-[#B8C3CF]"
         }
       `}
     >
-      {/* The chip swatches are usually flat colors or tiny images */}
-      <div className="flex h-[14px] w-[14px] items-center justify-center overflow-hidden rounded-full border border-[#E4E9EF]">
+      {/* The color circle */}
+      <div className="flex h-[12px] w-[12px] shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#E4E9EF]">
+         {/* If it's a solid color, you can use bg-color, else use the image slice */}
          <img src={image} alt={name} className="h-full w-full object-cover" />
       </div>
 
-      <span className="truncate text-[11px] font-medium leading-none text-[#1F1F1F]">
+      <span className={`text-[11px] leading-none ${selected ? 'font-bold text-[#1F1F1F]' : 'font-medium text-[#6F7882]'}`}>
         {name}
       </span>
     </button>

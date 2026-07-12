@@ -5,23 +5,23 @@ interface CheckoutActionsProps {
 
 const CheckoutActions = ({ savings, onSave }: CheckoutActionsProps) => {
   return (
-    <div className="flex w-[350px] flex-col items-center gap-[4px] pt-[10px] h-[74px]">
+    <div className="flex w-full flex-col items-center gap-[12px] pt-[12px]">
       
       {savings > 0 && (
-        <span className="w-[350px] h-[12px] text-center text-[12px] font-semibold leading-[100%] tracking-[-0.056px] text-[#0AA288] flex items-center justify-center">
+        <span className="w-full px-[10px] text-center text-[13px] font-semibold leading-normal tracking-[-0.02em] text-[#0AA288]">
           Congrats! You're saving ${savings.toFixed(2)} on your security bundle!
         </span>
       )}
 
-      <button className="flex flex-row justify-center items-center px-[16px] py-[13px] gap-[8px] w-[350px] h-[48px] rounded-[4px] bg-[#4E2FD2] transition-colors hover:bg-[#3B22B4]">
-        <span className="w-[318px] h-[22px] text-[17px] font-bold text-[#FFFFFF] leading-[22px] text-center flex items-center justify-center" style={{ fontFamily: "'TT Norms Pro', sans-serif" }}>
+      <button className="flex w-full items-center justify-center rounded-[6px] bg-[#4E2FD2] px-[16px] py-[14px] transition-colors hover:bg-[#3B22B4] shadow-sm">
+        <span className="text-[17px] font-bold text-white text-center" style={{ fontFamily: "'TT Norms Pro', sans-serif" }}>
           Checkout
         </span>
       </button>
 
       <button
         onClick={onSave}
-        className="w-[350px] h-[17px] text-[14px] italic text-[#484848] leading-[120%] tracking-[-0.016px] underline decoration-solid flex items-center justify-center text-center hover:text-[#1F1F1F] mt-[4px]"
+        className="mt-[4px] w-full px-[10px] py-[8px] text-[14px] italic text-[#484848] underline transition-colors hover:text-[#1F1F1F] text-center"
       >
         Save my system for later
       </button>

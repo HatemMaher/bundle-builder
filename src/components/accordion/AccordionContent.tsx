@@ -6,8 +6,8 @@ interface AccordionContentProps {
 
 const AccordionContent = ({ children }: AccordionContentProps) => {
   return (
-    <div className="w-full pt-[20px]">
-      <div className="flex flex-col gap-[20px]">
+    <div className="w-full">
+      <div className="flex w-full flex-col">
         {children}
       </div>
     </div>

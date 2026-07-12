@@ -34,7 +34,7 @@ const AccordionHeader = ({
       `}
     >
       {/* LEFT SIDE */}
-      <div className="flex gap-[10px]">
+      <div className="flex gap-[10px] px-20">
         <Icon className={`shrink-0 ${open ? "text-[#1F1F1F]" : "text-[#6F7882]"}`} />
         <h2 className="text-left text-[22px] font-semibold leading-[22px] tracking-[0.6px] text-[#0B0D10]">
           {title}

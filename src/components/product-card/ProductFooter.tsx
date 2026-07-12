@@ -1,5 +1,4 @@
 import type { Product } from "../../types";
-
 import QuantityStepper from "../quantity-stepper/QuantityStepper";
 import ProductPrice from "./ProductPrice";
 
@@ -17,7 +16,8 @@ const ProductFooter = ({
   onDecrease,
 }: ProductFooterProps) => {
   return (
-    <div className="flex w-full items-end justify-between gap-4 pt-1">
+    // mt-auto pushes this row to the very bottom of the card, matching Figma's spacing
+    <div className="flex w-full items-end justify-between mt-auto pt-[8px]">
       <QuantityStepper
         quantity={quantity}
         onIncrease={onIncrease}

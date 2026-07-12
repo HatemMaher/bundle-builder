@@ -3,20 +3,25 @@ import ReviewPanel from "../components/review-panel/ReviewPanel";
 
 const BundleBuilderPage = () => {
   return (
-    <main className="min-h-screen bg-white flex flex-col items-center justify-center">
-      <div className="mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-6 lg:px-10 xl:px-[120px] xl:py-[50px]">
-        <h1 className="mb-6 text-center text-[32px] font-bold tracking-tight text-[#1F1F1F] sm:text-left xl:mb-10 xl:text-[42px]">
+    <main className="flex min-h-screen flex-col items-center bg-white">
+      {/* ADDED: px-[24px] and py-[40px] to ensure the whole app has a safe distance from the browser edges */}
+      <div className="mx-auto w-full max-w-[1440px] px-[24px] py-[40px] md:px-[40px] xl:px-[120px] xl:py-[60px]">
+        
+        <h1 className="mb-[24px] text-center text-[32px] font-bold tracking-tight text-[#1F1F1F] sm:text-left xl:mb-[40px] xl:text-[42px]">
           Let's get started!
         </h1>
 
-        <div className="flex flex-col gap-8 xl:flex-row xl:items-start xl:gap-[30px]">
-          <section className="w-full xl:max-w-[768px] xl:flex-1">
+        {/* ADDED: gap-[32px] to push the left accordion and right review panel away from each other */}
+        <div className="flex flex-col gap-[32px] lg:flex-row lg:items-start lg:gap-[40px] xl:gap-[64px]">
+          
+          <section className="w-full flex-1">
             <Builder />
           </section>
 
-          <aside className="w-full xl:w-[400px] xl:flex-shrink-0">
+          <aside className="w-full shrink-0 lg:w-[380px] xl:w-[420px]">
             <ReviewPanel />
           </aside>
+          
         </div>
       </div>
     </main>

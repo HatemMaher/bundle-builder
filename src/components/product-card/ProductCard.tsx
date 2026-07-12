@@ -46,10 +46,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
       className={`
         flex
         w-full
-        max-w-[361.5px]
-        min-h-[159px]
-        items-center
-        gap-[16px]
+        h-full         /* FORCES card to stretch to the exact height of the tallest card in the row */
+        max-w-[400px]  /* Ensures the centered bottom card doesn't stretch twice as wide as the others */
+        items-stretch  /* Ensures the content container stretches top-to-bottom */
+        gap-[16px] 
         rounded-[10px]
         bg-white
         p-[16px]
@@ -68,6 +68,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         badge={product.badge}
       />
 
+      {/* Removed justify-center here so the footer can properly push to the bottom */}
       <div className="flex flex-1 flex-col gap-[10px] self-stretch">
         <ProductInfo
           title={product.title}
@@ -84,6 +85,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           />
         )}
 
+        {/* ProductFooter contains mt-auto which will force it to the very bottom, ensuring all steppers align! */}
         <ProductFooter
           product={product}
           quantity={quantity}
