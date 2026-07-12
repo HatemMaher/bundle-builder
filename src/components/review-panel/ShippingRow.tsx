@@ -8,7 +8,7 @@ const ShippingRow = ({
   shippingPrice = "FREE",
 }: ShippingRowProps) => {
   return (
-    <div className="flex w-full items-center justify-between border-t border-[#CED6DE] py-[16px]">
+    <div className="flex w-full justify-between border-t border-[#CED6DE] !py-3">
       
       {/* Left */}
       <div className="flex items-center gap-[12px]">

@@ -71,7 +71,9 @@ const ReviewPanel = () => {
 
   return (
     // Locked padding to exactly p-[20px] on all mobile and tablet screens
-    <aside className="flex  flex-col gap-[20px] rounded-[12px] bg-[#EDF4FF] p-[20px] transition-all duration-300">
+    
+    <aside className="rounded-[10px] bg-[#EDF4FF]">
+        <div className="!px-5 !py-3 flex flex-col gap-[24px]">
       <ReviewHeader />
 
       <ReviewSection title="CAMERAS">
@@ -159,6 +161,7 @@ const ReviewPanel = () => {
       <ShippingRow />
       <PricingSummary subtotal={subtotal} originalTotal={originalTotal} />
       <CheckoutActions savings={savings} onSave={saveState} />
+      </div>
     </aside>
   );
 };

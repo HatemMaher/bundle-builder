@@ -26,7 +26,7 @@ const ReviewItem = ({
   const isPlan = title.includes("Unlimited");
 
   return (
-    <div className="flex w-full items-center justify-between gap-[12px] py-[6px]">
+    <div className="flex w-full">
       
       {/* Image & Text Wrapper */}
       <div className="flex flex-1 items-center gap-[16px] min-w-0">
