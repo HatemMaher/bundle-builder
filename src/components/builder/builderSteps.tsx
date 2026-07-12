@@ -1,4 +1,4 @@
-import type { Dispatch, ReactNode, SetStateAction } from "react";
+import type { ReactNode } from "react";
 import ProductGrid from "../product-card/ProductGrid";
 
 export interface BuilderStep {
@@ -7,12 +7,12 @@ export interface BuilderStep {
   content: ReactNode;
 }
 
-// Wrap in a function so we can pass the step-advancer down if needed inside custom content
-export const getBuilderSteps = (setOpenStep: Dispatch<SetStateAction<1 | 2 | 3 | 4>>): BuilderStep[] => [
+// Removed the unused parameter to clear the TypeScript warning
+export const getBuilderSteps = (): BuilderStep[] => [
   {
     step: 1,
     title: "Choose your cameras",
-    content: <ProductGrid />, // Assuming ProductGrid now filters for category="camera" internally or you handle it there
+    content: <ProductGrid />,
   },
   {
     step: 2,

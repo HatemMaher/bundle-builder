@@ -32,7 +32,7 @@ const Builder = () => {
   };
 
   // Pass the setOpenStep function into the steps definition so the Next buttons work
-  const steps = getBuilderSteps(setOpenStep);
+  const steps = getBuilderSteps();
 
   return (
     <Accordion>
