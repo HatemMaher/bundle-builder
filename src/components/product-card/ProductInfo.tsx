@@ -16,7 +16,7 @@ const ProductInfo = ({
         w-full
         flex-col
         items-start
-        gap-[8px]
+        gap-[10px]
       "
     >
       {/* Product Title */}
@@ -49,7 +49,6 @@ const ProductInfo = ({
         <a
           href={learnMoreUrl}
           className="
-            ml-1
             whitespace-nowrap
 
             font-semibold

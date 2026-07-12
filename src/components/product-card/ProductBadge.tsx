@@ -7,31 +7,27 @@ const ProductBadge = ({ label }: ProductBadgeProps) => {
     <div
       className="
         absolute
-        left-0
-        top-0
-        z-10
+        left-1
+        top-1
+        
 
         flex
         h-[20px]
-        min-w-[63px]
+        min-w-[70px]
         items-center
         justify-center
 
         rounded-full
 
         bg-[#4E2FD2]
-
-        px-[8px]
       "
     >
       <span
         className="
-          whitespace-nowrap
 
           text-[12px]
           font-semibold
           leading-none
-
           text-white
         "
       >

@@ -37,33 +37,28 @@ const AccordionItem = ({
     <div
       className={`
         relative flex w-full flex-col transition-all duration-300
-        ${open ? "my-[16px]" : ""}
+        ${open ? "my-[16px]" : "hover:bg-black/[0.01] border-b"} 
       `}
     >
-      {/* 1. THE SEPARATED BACKGROUND DIV 
-          This sits behind the content (z-0) and perfectly fills the wrapper.
-      */}
+      {/* 1. THE SEPARATED BACKGROUND DIV */}
       {open && (
         <div className="absolute inset-0 z-0 rounded-[12px] bg-[#EDF4FF]" />
       )}
 
-      {/* 2. THE MAIN CONTENT DIV 
-          This sits on top (z-10) and handles all the structural padding 
-          and layout without worrying about the background color.
-      */}
+      {/* 2. THE MAIN CONTENT DIV */}
       <div 
         className={`
           relative z-10 flex w-full flex-col
-          ${open ? "p-[20px] sm:p-[24px] md:p-[32px]" : "py-[20px] border-b border-[#E4E9EF] hover:bg-black/[0.01]"}
+          ${open ? "p-[20px] sm:p-[24px] md:p-[32px]" : "py-[20px]"}
         `}
       >
-        <div className={`w-full ${open ? "mb-[12px]" : "mb-[8px]"}`}>
-          <AccordionStep step={step} className="!px-5 !py-2" />
+        
+        {/* Step Label and Dynamic Border */}
+        {/* We moved the border logic here. If open, the border has opacity-10. 
+            If closed, the border sits exactly here, underneath the step label! */}
+        <div className={`w-full ${open ? "mb-[24px] border-b " : "mb-[16px] border-b"}`}>
+          <AccordionStep step={step} className="!py-3 !px-4" />
         </div>
-
-        {open && (
-          <div className="mb-[24px] h-[1px] w-full bg-[#1F1F1F] opacity-10" />
-        )}
 
         <AccordionHeader
           step={step}
@@ -72,19 +67,19 @@ const AccordionItem = ({
           expanded={open}
           bordered={false}
           onClick={onClick}
-          className="!px-5 !py-2"
+          className="!py-5 !px-4"
         />
 
         {open && (
           <AccordionContent>
             
             {/* The Grid of Cards */}
-            <div className="flex w-full justify-center pt-[24px] pb-[16px]">
+            <div className="!px-6">
               {children}
             </div>
 
             {step < 4 && (
-              <div className="mt-[32px] flex w-full justify-center">
+              <div className="flex w-full justify-center !py-4">
                 <AccordionNextButton
                   label={`Next: ${nextStepLabels[step]}`}
                   onClick={onNext}

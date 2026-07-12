@@ -46,13 +46,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
       className={`
         flex
         w-full
-        h-full         /* FORCES card to stretch to the exact height of the tallest card in the row */
-        max-w-[400px]  /* Ensures the centered bottom card doesn't stretch twice as wide as the others */
-        items-stretch  /* Ensures the content container stretches top-to-bottom */
-        gap-[16px] 
+        max-w-[450px]  /* Ensures the centered bottom card doesn't stretch twice as wide as the others */
+    
+        gap-[30px] 
         rounded-[10px]
         bg-white
-        p-[16px]
         transition-all
         duration-200
         ${
