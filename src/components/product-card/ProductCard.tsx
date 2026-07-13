@@ -46,50 +46,62 @@ const ProductCard = ({ product }: ProductCardProps) => {
       className={`
         flex
         w-full
-        max-w-[450px]  /* Ensures the centered bottom card doesn't stretch twice as wide as the others */
-    
-        gap-[30px] 
-        rounded-[10px]
-        bg-white
+        h-full           /* Allows cards in the same row to stretch to match each other */
+        min-h-[159px]    /* REPLACED h-[159px]. Now the card can grow taller on mobile! */
+        flex-row         
+        items-stretch    
+        p-[11px]         
+        gap-[12px] sm:gap-[19px] 
+        rounded-[10px]   
+        bg-[#FFFFFF]     
         transition-all
         duration-200
         ${
           isSelected
-            ? "border-[2px] border-[#4E2FD2] shadow-sm"
+            ? "border-[2px] border-[#4E2FD2]/70 shadow-sm"
             : "border-[1px] border-[#E4E9EF] hover:border-[#D0D6DC]"
         }
       `}
     >
-      <ProductImage
-        image={product.image}
-        title={product.title}
-        badge={product.badge}
-      />
-
-      {/* Removed justify-center here so the footer can properly push to the bottom */}
-      <div className="flex flex-1 flex-col gap-[10px] self-stretch">
-        <ProductInfo
+      {/* Left side: The Image */}
+      <div className="flex shrink-0 items-center justify-center h-full">
+        <ProductImage
+          image={product.image}
           title={product.title}
-          description={product.description}
-          learnMoreUrl={product.learnMoreUrl}
+          badge={product.badge}
         />
+      </div>
 
-        {product.variants && (
-          <VariantSelector
-            productId={product.id}
-            variants={product.variants}
-            activeVariant={activeVariant}
-            productImage={product.image}
+      {/* Right side: The Details */}
+      {/* ADDED min-w-0: This ensures long text will wrap instead of pushing the card off-screen */}
+      <div className="flex flex-1 flex-col justify-between min-w-0">
+        
+        <div className="flex flex-col gap-[8px]">
+          <ProductInfo
+            title={product.title}
+            description={product.description}
+            learnMoreUrl={product.learnMoreUrl}
           />
-        )}
 
-        {/* ProductFooter contains mt-auto which will force it to the very bottom, ensuring all steppers align! */}
-        <ProductFooter
-          product={product}
-          quantity={quantity}
-          onIncrease={increaseQuantity}
-          onDecrease={decreaseQuantity}
-        />
+          {product.variants && (
+            <VariantSelector
+              productId={product.id}
+              variants={product.variants}
+              activeVariant={activeVariant}
+              productImage={product.image}
+            />
+          )}
+        </div>
+
+        {/* Footer (Stepper & Price) pinned to the bottom */}
+        <div className="w-full">
+          <ProductFooter
+            product={product}
+            quantity={quantity}
+            onIncrease={increaseQuantity}
+            onDecrease={decreaseQuantity}
+          />
+        </div>
       </div>
     </article>
   );

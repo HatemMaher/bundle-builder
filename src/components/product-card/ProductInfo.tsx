@@ -10,60 +10,23 @@ const ProductInfo = ({
   learnMoreUrl = "#",
 }: ProductInfoProps) => {
   return (
-    <div
-      className="
-        flex
-        w-full
-        flex-col
-        items-start
-        gap-[10px]
-      "
-    >
-      {/* Product Title */}
-
-      <h3
-        className="
-          text-[16px]
-          font-semibold
-          leading-[20px]
-          tracking-[0.01em]
-          text-[#1F1F1F]
-        "
-      >
+    // Figma Match: Tighter gap between title and description
+    <div className="flex w-full flex-col items-start !px-2">
+      
+      <h3 className="text-[16px] font-bold tracking-tight text-[#1F1F1F] !py-2 ">
         {title}
       </h3>
 
-      {/* Description */}
-
-      <p
-        className="
-          text-[12px]
-          font-medium
-          leading-[16px]
-          tracking-[0.01em]
-          text-[#1F1F1FBF]
-        "
-      >
+      <p className="text-[13px] font-medium leading-[1.4] text-[#1F1F1F]/70">
         {description}
-
         <a
           href={learnMoreUrl}
-          className="
-            whitespace-nowrap
-
-            font-semibold
-
-            text-[#4E2FD2]
-
-            transition-colors
-
-            hover:text-[#3B22B4]
-            hover:underline
-          "
+          className="ml-1 whitespace-nowrap font-bold text-[#4E2FD2] transition-colors hover:text-[#3B22B4] hover:underline"
         >
           Learn More
         </a>
       </p>
+      
     </div>
   );
 };

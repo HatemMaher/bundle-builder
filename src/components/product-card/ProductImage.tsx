@@ -16,13 +16,7 @@ const ProductImage = ({
     <div
       className="
         relative
-
-        flex
-        shrink-0
-        items-start
-        justify-center
-
-        w-[101px]
+        !py-1
       "
     >
       {badge && (

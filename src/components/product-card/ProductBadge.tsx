@@ -20,6 +20,7 @@ const ProductBadge = ({ label }: ProductBadgeProps) => {
         rounded-full
 
         bg-[#4E2FD2]
+        !py-3
       "
     >
       <span

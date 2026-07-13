@@ -74,7 +74,7 @@ const AccordionItem = ({
           <AccordionContent>
             
             {/* The Grid of Cards */}
-            <div className="!px-6">
+            <div className="!px-">
               {children}
             </div>
 

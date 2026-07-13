@@ -15,10 +15,7 @@ const VariantButton = ({ image, name, selected, onClick }: VariantButtonProps) =
         h-[24px] 
         items-center
         gap-[6px]
-        rounded-full /* Figma uses full pill shapes, not slightly rounded corners */
         border-[1px]
-        py-[2px]
-        px-[8px]
         transition-all
         duration-200
         ${

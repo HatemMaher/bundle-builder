@@ -7,9 +7,9 @@ const ProductPrice = ({ price, compareAtPrice }: ProductPriceProps) => {
   const hasDiscount = compareAtPrice !== undefined && compareAtPrice > price;
 
   return (
-    <div className="flex flex-col items-end gap-[2px]">
+    <div className="flex flex-col items-end gap-[2px] !py-3 !px-3">
       {hasDiscount && (
-        <span className="text-[12px] font-medium leading-none text-[#D8392B] line-through">
+        <span className="text-[15px] font-medium leading-none text-[#D8392B] line-through">
           ${compareAtPrice.toFixed(2)}
         </span>
       )}

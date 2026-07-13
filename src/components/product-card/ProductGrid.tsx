@@ -3,19 +3,25 @@ import ProductCard from "./ProductCard";
 
 const ProductGrid = () => {
   return (
-    <div className="grid w-full grid-cols-1 gap-[16px] md:grid-cols-2">
+    // Explicitly 1 column on mobile, 2 columns on desktop (xl)
+    <div className="grid w-full grid-cols-1 gap-[16px] xl:grid-cols-2 xl:gap-[24px] justify-items-center">
       {products.map((product, index) => {
-        // This math checks if it's the very last card AND if the total number is odd
         const isLastAndOdd = index === products.length - 1 && products.length % 2 !== 0;
 
         return (
           <div
             key={product.id}
             className={`flex w-full justify-center ${
-              isLastAndOdd ? "md:col-span-2 md:justify-self-center" : ""
+              // ONLY span 2 columns on desktop. Spanning 2 on mobile breaks the screen width!
+              isLastAndOdd ? "xl:col-span-2" : ""
             }`}
           >
-            <ProductCard product={product} />
+            {/* Fluid on mobile (max-w-[400px]), 
+              but exactly 362px on desktop for the perfect Figma match! 
+            */}
+            <div className="w-full max-w-[400px] xl:max-w-[362px]">
+              <ProductCard product={product} />
+            </div>
           </div>
         );
       })}

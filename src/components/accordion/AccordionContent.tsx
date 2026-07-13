@@ -6,11 +6,9 @@ interface AccordionContentProps {
 
 const AccordionContent = ({ children }: AccordionContentProps) => {
   return (
-    <div className="w-full">
-      <div className="flex w-full flex-col">
+      <div className="flex w-full flex-col !px-3">
         {children}
       </div>
-    </div>
   );
 };
 

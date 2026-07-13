@@ -17,7 +17,7 @@ const ProductFooter = ({
 }: ProductFooterProps) => {
   return (
     // mt-auto pushes this row to the very bottom of the card, matching Figma's spacing
-    <div className="flex w-full items-end justify-between mt-auto pt-[8px]">
+    <div className="flex w-full  justify-between mt-aut">
       <QuantityStepper
         quantity={quantity}
         onIncrease={onIncrease}
