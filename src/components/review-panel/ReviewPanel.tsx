@@ -77,7 +77,7 @@ const ReviewPanel = () => {
         Tablet: md:grid-cols-2 (Side-by-side)
         Desktop: xl:grid-cols-1 (Stacked in the narrow sidebar)
       */}
-      <div className="!px-5 !py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-[24px] md:gap-[40px] xl:gap-[24px]">
+      <div className="!px-5 !py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-[24px] md:gap-[40px] ">
         
         {/* === LEFT COLUMN (Items & Shipping) === */}
         <div className="flex flex-col gap-[24px]">
@@ -125,7 +125,7 @@ const ReviewPanel = () => {
           </ReviewSection>
 
           <ReviewSection title="ACCESSORIES">
-            {grouped.accessory.length > 0 ? (
+            {grouped.accessory.length === 0 ? (
               <span className="text-[15px] font-medium text-[#8A94A6]">No accessories selected.</span>
             ) : (
               grouped.accessory.map((item) => (
@@ -145,7 +145,7 @@ const ReviewPanel = () => {
           </ReviewSection>
 
           <ReviewSection title="PLAN">
-            {grouped.plan.length > 0 ? (
+            {grouped.plan.length === 0 ? (
               <span className="text-[15px] font-medium text-[#8A94A6]">No plan selected.</span>
             ) : (
               grouped.plan.map((item) => (

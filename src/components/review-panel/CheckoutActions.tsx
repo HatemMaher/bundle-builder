@@ -13,7 +13,7 @@ const CheckoutActions = ({ savings, onSave }: CheckoutActionsProps) => {
         </span>
       )}
 
-      <button className="flex w-full items-center justify-center rounded-[6px] bg-[#4E2FD2] px-[16px] py-[14px] transition-colors hover:bg-[#3B22B4] shadow-sm">
+      <button className="flex w-full items-center justify-center rounded-[6px] bg-[#4E2FD2] !px-[16px] !py-[14px] transition-colors hover:bg-[#3B22B4] shadow-sm">
         <span className="text-[17px] font-bold text-white text-center" style={{ fontFamily: "'TT Norms Pro', sans-serif" }}>
           Checkout
         </span>
