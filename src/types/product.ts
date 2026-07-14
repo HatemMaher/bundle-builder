@@ -7,6 +7,7 @@ export type ProductCategory =
 export interface ProductVariant {
   id: string;
   name: string;
+  image?: string;
 }
 
 export interface Product {

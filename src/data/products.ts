@@ -1,10 +1,16 @@
 import type { Product } from "../types";
 
 import camV4 from "../assets/products/wyze-cam-v4.png";
+import camV4Grey from "../assets/products/wyze-cam-v4-grey.png";
+import camV4Black from "../assets/products/wyze-cam-v4-black.png";
 import camPanV3 from "../assets/products/wyze-cam-pan-v3.png";
+import camPanV3White from "../assets/products/wyze-cam-pan-v3-white.png";
+import camPanV3Black from "../assets/products/wyze-cam-pan-v3-black.png";
 import floodlightV2 from "../assets/products/wyze-cam-floodlight-v2.png";
+import floodlightV2Black from "../assets/products/wyze-cam-floodlight-v2-black.png";
 import duoDoorbell from "../assets/products/wyze-duo-cam-doorbell.png";
 import batteryCamPro from "../assets/products/wyze-battery-cam-pro.png";
+import batteryCamProBlack from "../assets/products/wyze-battery-cam-pro-black.png";
 
 export const products: Product[] = [
   {
@@ -18,9 +24,9 @@ export const products: Product[] = [
     compareAtPrice: 35.98,
     learnMoreUrl: "#",
     variants: [
-      { id: "white", name: "White" },
-      { id: "grey", name: "Grey" },
-      { id: "black", name: "Black" },
+      { id: "white", name: "White", image: camV4 },
+      { id: "grey", name: "Grey", image: camV4Grey },
+      { id: "black", name: "Black", image: camV4Black },
     ],
   },
   {
@@ -34,8 +40,8 @@ export const products: Product[] = [
     compareAtPrice: 39.98,
     learnMoreUrl: "#",
     variants: [
-      { id: "white", name: "White" },
-      { id: "black", name: "Black" },
+      { id: "white", name: "White", image: camPanV3White },
+      { id: "black", name: "Black", image: camPanV3Black },
     ],
   },
   {
@@ -49,8 +55,8 @@ export const products: Product[] = [
     compareAtPrice: 89.98,
     learnMoreUrl: "#",
     variants: [
-      { id: "white", name: "White" },
-      { id: "black", name: "Black" },
+      { id: "white", name: "White", image: floodlightV2 },
+      { id: "black", name: "Black", image: floodlightV2Black },
     ],
   },
   {
@@ -71,8 +77,8 @@ export const products: Product[] = [
     price: 89.98,
     learnMoreUrl: "#",
     variants: [
-      { id: "white", name: "White" },
-      { id: "black", name: "Black" },
+      { id: "white", name: "White", image: batteryCamPro },
+      { id: "black", name: "Black", image: batteryCamProBlack },
     ],
   },
 ];

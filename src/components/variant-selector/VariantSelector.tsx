@@ -31,7 +31,7 @@ const VariantSelector = ({
       {variants.map((variant) => (
         <VariantButton
           key={variant.id}
-          image={productImage ?? "/placeholder-product.png"}
+          image={variant.image ?? productImage ?? "/placeholder-product.png"}
           name={variant.name}
           selected={activeVariant === variant.id}
           onClick={() =>
