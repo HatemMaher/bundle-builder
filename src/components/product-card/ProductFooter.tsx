@@ -15,18 +15,41 @@ const ProductFooter = ({
   onIncrease,
   onDecrease,
 }: ProductFooterProps) => {
-  return (
-    // mt-auto pushes this row to the very bottom of the card, matching Figma's spacing
-    <div className="flex w-full  justify-between mt-aut">
-      <QuantityStepper
-        quantity={quantity}
-        onIncrease={onIncrease}
-        onDecrease={onDecrease}
-      />
+  const isPlan = product.category === "plan";
+  const isSelected = quantity > 0;
 
+  return (
+    <div className="flex w-full items-center justify-between mt-auto">
+      
+      {/* If it's a plan, show a simple Select button. Otherwise, show the +/- stepper! */}
+      {isPlan ? (
+        <button
+          type="button"
+          onClick={isSelected ? onDecrease : onIncrease}
+          className={`
+            flex h-[28px] items-center justify-center rounded-[4px] !px-[16px] text-[14px] font-bold transition-all
+            ${
+              isSelected
+                ? "bg-[#4E2FD2] text-white border border-[#4E2FD2]"
+                : "bg-white text-[#4E2FD2] border border-[#4E2FD2] hover:bg-[#EDF4FF]"
+            }
+          `}
+        >
+          {isSelected ? "Selected" : "Select"}
+        </button>
+      ) : (
+        <QuantityStepper
+          quantity={quantity}
+          onIncrease={onIncrease}
+          onDecrease={onDecrease}
+        />
+      )}
+
+      {/* Passing the suffix down so the plan correctly says /mo */}
       <ProductPrice
         price={product.price}
         compareAtPrice={product.compareAtPrice}
+        suffix={product.suffix} 
       />
     </div>
   );

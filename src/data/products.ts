@@ -12,7 +12,14 @@ import duoDoorbell from "../assets/products/wyze-duo-cam-doorbell.png";
 import batteryCamPro from "../assets/products/wyze-battery-cam-pro.png";
 import batteryCamProBlack from "../assets/products/wyze-battery-cam-pro-black.png";
 
+// New Item Images (Ensure these exist in your assets folder!)
+import camUnlimited from "../assets/products/cam-unlimited.svg";
+import senseMotion from "../assets/products/wyze-sense-motion.png";
+import senseHub from "../assets/products/wyze-sense-hub.png";
+import microsd from "../assets/products/wyze-microsd-256.png";
+
 export const products: Product[] = [
+  // === CAMERAS ===
   {
     id: "wyze-cam-v4",
     category: "camera",
@@ -80,5 +87,46 @@ export const products: Product[] = [
       { id: "white", name: "White", image: batteryCamPro },
       { id: "black", name: "Black", image: batteryCamProBlack },
     ],
+  },
+
+  // === PLANS ===
+  {
+    id: "cam-unlimited",
+    category: "plan",
+    title: "Cam Unlimited",
+    description: "Unlimited cameras. Unlimited peace of mind.",
+    image: camUnlimited,
+    price: 9.99,
+    compareAtPrice: 12.99,
+    suffix: "/mo",
+  },
+
+  // === SENSORS ===
+  {
+    id: "wyze-sense-motion",
+    category: "sensor",
+    title: "Wyze Sense Motion Sensor",
+    description: "Catch movement from anywhere in the room.",
+    image: senseMotion,
+    price: 29.99, 
+  },
+  {
+    id: "wyze-sense-hub",
+    category: "sensor",
+    title: "Wyze Sense Hub (Required)",
+    description: "The central brain of your Wyze security system.",
+    image: senseHub,
+    price: 0,
+    compareAtPrice: 29.92,
+  },
+
+  // === ACCESSORIES ===
+  {
+    id: "wyze-microsd-256",
+    category: "accessory",
+    title: "Wyze MicroSD Card (256GB)",
+    description: "Keep continuous recording locally.",
+    image: microsd,
+    price: 20.98,
   },
 ];

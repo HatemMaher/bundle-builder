@@ -86,7 +86,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             learnMoreUrl={product.learnMoreUrl}
           />
 
-          {product.variants && (
+          {product.variants && product.variants.length > 0 && product.category !== "plan" && (
             <VariantSelector
               productId={product.id}
               variants={product.variants}
