@@ -24,8 +24,8 @@ const VariantSelector = ({
       className="
         flex
         flex-wrap
+        
         gap-[6px]
-        !py-
       "
     >
       {variants.map((variant) => (

@@ -3,6 +3,7 @@ import { useBuilder } from "../../context/BuilderContext";
 import ProductFooter from "./ProductFooter";
 import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
+import ProductBadge from "./ProductBadge";
 import VariantSelector from "../variant-selector/VariantSelector";
 
 interface ProductCardProps {
@@ -44,18 +45,19 @@ const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <article
       className={`
+        relative
         flex
         w-full
-        h-full           /* Allows cards in the same row to stretch to match each other */
-        min-h-[159px]    /* REPLACED h-[159px]. Now the card can grow taller on mobile! */
-        flex-row         
-        items-stretch    
-        p-[11px]         
-        gap-[12px] sm:gap-[19px] 
-        rounded-[10px]   
-        bg-[#FFFFFF]     
+        
+        /* Mobile */ flex-row items-stretch !p-[12px] gap-[12px] min-h-[160px] h-full
+        /* Tablet */ md:flex-col md:items-center md:p-[20px] md:gap-[16px] md:min-h-0
+        /* Desktop */ xl:flex-row xl:items-center xl:!p-[6px] xl:gap-[19px] 
+        
+        rounded-[10px]
+        bg-[#FFFFFF]
         transition-all
         duration-200
+        overflow-hidden
         ${
           isSelected
             ? "border-[2px] border-[#4E2FD2]/70 shadow-sm"
@@ -63,19 +65,20 @@ const ProductCard = ({ product }: ProductCardProps) => {
         }
       `}
     >
-      {/* Left side: The Image */}
-      <div className="flex shrink-0 items-center justify-center h-full">
-        <ProductImage
-          image={product.image}
-          title={product.title}
-          badge={product.badge}
-        />
+      {/* THE BADGE: Pinned to the top left. On desktop, 11px perfectly aligns it with the padding edge! */}
+      {product.badge && (
+        <div className="absolute left-[10px] top-[10px] z-10 md:left-[16px] md:top-[16px] xl:left-[11px] xl:top-[11px]">
+          <ProductBadge label={product.badge} />
+        </div>
+      )}
+
+      {/* Image Section */}
+      <div className="flex shrink-0 items-center justify-center w-[101px] md:w-full xl:w-[101px] xl:h-[137px] pt-[24px] md:pt-[12px] xl:pt-0">
+        <ProductImage image={product.image} title={product.title} />
       </div>
 
-      {/* Right side: The Details */}
-      {/* ADDED min-w-0: This ensures long text will wrap instead of pushing the card off-screen */}
-      <div className="flex flex-1 flex-col justify-between min-w-0">
-        
+      {/* Content Section */}
+      <div className="flex flex-1 flex-col justify-between min-w-0 w-full md:!mt-2 xl:!mt-0 xl:h-full xl:!py-[2px]">
         <div className="flex flex-col gap-[8px]">
           <ProductInfo
             title={product.title}
@@ -93,8 +96,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
           )}
         </div>
 
-        {/* Footer (Stepper & Price) pinned to the bottom */}
-        <div className="w-full">
+        {/* Footer (Stepper & Price) */}
+        <div className="w-full mt-auto !pt-[12px] xl:pt-0 !py-2 !px-2">
           <ProductFooter
             product={product}
             quantity={quantity}

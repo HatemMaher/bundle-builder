@@ -70,97 +70,111 @@ const ReviewPanel = () => {
   };
 
   return (
-    // Locked padding to exactly p-[20px] on all mobile and tablet screens
-    
     <aside className="rounded-[10px] bg-[#EDF4FF]">
-        <div className="!px-5 !py-3 flex flex-col gap-[24px]">
-      <ReviewHeader />
+      {/* 
+        RESPONSIVE GRID MAGIC:
+        Mobile: grid-cols-1 (Stacked)
+        Tablet: md:grid-cols-2 (Side-by-side)
+        Desktop: xl:grid-cols-1 (Stacked in the narrow sidebar)
+      */}
+      <div className="!px-5 !py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-[24px] md:gap-[40px] xl:gap-[24px]">
+        
+        {/* === LEFT COLUMN (Items & Shipping) === */}
+        <div className="flex flex-col gap-[24px]">
+          <ReviewHeader />
 
-      <ReviewSection title="CAMERAS">
-        {grouped.camera.length === 0 ? (
-          <span className="text-[15px] font-medium text-[#8A94A6]">No cameras selected.</span>
-        ) : (
-          grouped.camera.map((item) => (
-            <ReviewItem
-              key={item.id}
-              id={item.id}
-              image={item.image}
-              title={item.title}
-              subtitle={item.variantName}
-              quantity={item.quantity}
-              price={item.total}
-              compareAtPrice={item.compareTotal}
-              onIncrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity + 1)}
-              onDecrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity - 1)}
-            />
-          ))
-        )}
-      </ReviewSection>
+          <ReviewSection title="CAMERAS">
+            {grouped.camera.length === 0 ? (
+              <span className="text-[15px] font-medium text-[#8A94A6]">No cameras selected.</span>
+            ) : (
+              grouped.camera.map((item) => (
+                <ReviewItem
+                  key={item.id}
+                  id={item.id}
+                  image={item.image}
+                  title={item.title}
+                  subtitle={item.variantName}
+                  quantity={item.quantity}
+                  price={item.total}
+                  compareAtPrice={item.compareTotal}
+                  onIncrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity + 1)}
+                  onDecrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity - 1)}
+                />
+              ))
+            )}
+          </ReviewSection>
 
-      <ReviewSection title="SENSORS">
-        {grouped.sensor.length === 0 ? (
-          <span className="text-[15px] font-medium text-[#8A94A6]">No sensor selected.</span>
-        ) : (
-          grouped.sensor.map((item) => (
-            <ReviewItem
-              key={item.id}
-              id={item.id}
-              image={item.image}
-              title={item.title}
-              quantity={item.quantity}
-              price={item.total}
-              compareAtPrice={item.compareTotal}
-              onIncrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity + 1)}
-              onDecrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity - 1)}
-            />
-          ))
-        )}
-      </ReviewSection>
+          <ReviewSection title="SENSORS">
+            {grouped.sensor.length === 0 ? (
+              <span className="text-[15px] font-medium text-[#8A94A6]">No sensor selected.</span>
+            ) : (
+              grouped.sensor.map((item) => (
+                <ReviewItem
+                  key={item.id}
+                  id={item.id}
+                  image={item.image}
+                  title={item.title}
+                  quantity={item.quantity}
+                  price={item.total}
+                  compareAtPrice={item.compareTotal}
+                  onIncrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity + 1)}
+                  onDecrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity - 1)}
+                />
+              ))
+            )}
+          </ReviewSection>
 
-      <ReviewSection title="ACCESSORIES">
-        {grouped.accessory.length > 0 ? (
-          <span className="text-[15px] font-medium text-[#8A94A6]">No accessories selected.</span>
-        ) : (
-          grouped.accessory.map((item) => (
-            <ReviewItem
-              key={item.id}
-              id={item.id}
-              image={item.image}
-              title={item.title}
-              quantity={item.quantity}
-              price={item.total}
-              compareAtPrice={item.compareTotal}
-              onIncrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity + 1)}
-              onDecrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity - 1)}
-            />
-          ))
-        )}
-      </ReviewSection>
+          <ReviewSection title="ACCESSORIES">
+            {grouped.accessory.length > 0 ? (
+              <span className="text-[15px] font-medium text-[#8A94A6]">No accessories selected.</span>
+            ) : (
+              grouped.accessory.map((item) => (
+                <ReviewItem
+                  key={item.id}
+                  id={item.id}
+                  image={item.image}
+                  title={item.title}
+                  quantity={item.quantity}
+                  price={item.total}
+                  compareAtPrice={item.compareTotal}
+                  onIncrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity + 1)}
+                  onDecrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity - 1)}
+                />
+              ))
+            )}
+          </ReviewSection>
 
-      <ReviewSection title="PLAN">
-        {grouped.plan.length > 0 ? (
-          <span className="text-[15px] font-medium text-[#8A94A6]">No plan selected.</span>
-        ) : (
-          grouped.plan.map((item) => (
-            <ReviewItem
-              key={item.id}
-              id={item.id}
-              image={item.image}
-              title={item.title}
-              quantity={item.quantity}
-              price={item.total}
-              compareAtPrice={item.compareTotal}
-              suffix={item.suffix}
-              onIncrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity + 1)}
-              onDecrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity - 1)}
-            />
-          ))
-        )}
-      </ReviewSection>
+          <ReviewSection title="PLAN">
+            {grouped.plan.length > 0 ? (
+              <span className="text-[15px] font-medium text-[#8A94A6]">No plan selected.</span>
+            ) : (
+              grouped.plan.map((item) => (
+                <ReviewItem
+                  key={item.id}
+                  id={item.id}
+                  image={item.image}
+                  title={item.title}
+                  quantity={item.quantity}
+                  price={item.total}
+                  compareAtPrice={item.compareTotal}
+                  suffix={item.suffix}
+                  onIncrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity + 1)}
+                  onDecrease={() => handleUpdateQuantity(item.productId, item.variantId, item.quantity - 1)}
+                />
+              ))
+            )}
+          </ReviewSection>
 
-      <ShippingRow />
-      <PricingSummary subtotal={subtotal} originalTotal={originalTotal} />
-      <CheckoutActions savings={savings} onSave={saveState} />
+          <ShippingRow />
+        </div>
+
+        {/* === RIGHT COLUMN (Summary & Checkout) === */}
+        {/* On tablet, we push it down slightly with md:pt-[32px] to align it perfectly with the top row */}
+        <div className="flex flex-col gap-[16px] md:pt-[32px] xl:pt-0">
+          <PricingSummary subtotal={subtotal} originalTotal={originalTotal} />
+          <CheckoutActions savings={savings} onSave={saveState} />
+        </div>
+
       </div>
     </aside>
   );

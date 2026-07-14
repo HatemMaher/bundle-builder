@@ -10,14 +10,13 @@ const ProductInfo = ({
   learnMoreUrl = "#",
 }: ProductInfoProps) => {
   return (
-    // Figma Match: Tighter gap between title and description
-    <div className="flex w-full flex-col items-start !px-2">
+    <div className="flex w-full flex-col items-start xl:gap-[8px]">
       
-      <h3 className="text-[16px] font-bold tracking-tight text-[#1F1F1F] !py-2 ">
+      <h3 className="text-[16px] font-bold tracking-tight text-[#1F1F1F] xl:leading-[100%]">
         {title}
       </h3>
 
-      <p className="text-[13px] font-medium leading-[1.4] text-[#1F1F1F]/70">
+      <p className="text-[13px] xl:text-[12px] font-medium leading-[1.4] xl:leading-[130%] text-[#1F1F1F]/75">
         {description}
         <a
           href={learnMoreUrl}

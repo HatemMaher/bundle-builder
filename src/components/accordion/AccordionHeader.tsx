@@ -5,9 +5,7 @@ interface AccordionHeaderProps {
   title: string;
   selected: number;
   expanded: boolean;
-  bordered?: boolean;
   onClick?: () => void;
-  className?: string; // <-- Added this
 }
 
 const AccordionHeader = ({
@@ -16,7 +14,6 @@ const AccordionHeader = ({
   selected,
   expanded: open,
   onClick,
-  className = "",
 }: AccordionHeaderProps) => {
   const Icon = accordionIcons[step];
 
@@ -24,27 +21,20 @@ const AccordionHeader = ({
     <button
       type="button"
       onClick={onClick}
-      className={`
-        flex
-        w-full
-        justify-between
-        px-[20px]
-        ${!open ? "hover:bg-black/[0.02]" : ""}
-        ${className} 
-      `}
+      className="flex w-full items-center justify-between group transition-opacity"
     >
-      {/* LEFT SIDE */}
-      <div className="flex gap-[10px] px-20">
-        <Icon className={`shrink-0 ${open ? "text-[#1F1F1F]" : "text-[#6F7882]"}`} />
-        <h2 className="text-left text-[22px] font-semibold leading-[22px] tracking-[0.6px] text-[#0B0D10]">
+      {/* LEFT SIDE: Icon and Title */}
+      <div className="flex items-center gap-[16px]">
+        <Icon className={`shrink-0 transition-colors duration-200 ${open ? "text-[#1F1F1F]" : "text-[#6F7882] group-hover:text-[#1F1F1F]"}`} />
+        <h2 className="text-left text-[22px] md:text-[24px] font-semibold leading-[1.2] tracking-tight text-[#0B0D10]">
           {title}
         </h2>
       </div>
 
-      {/* RIGHT SIDE */}
-      <div className="flex items-center gap-[8px]">
+      {/* RIGHT SIDE: X Selected & Chevron */}
+      <div className="flex items-center gap-[12px]">
         {selected > 0 && (
-          <span className="whitespace-nowrap text-[14px] font-medium leading-[16px] text-[#4E2FD2]">
+          <span className="whitespace-nowrap text-[14px] font-semibold leading-[16px] text-[#4E2FD2]">
             {selected} selected
           </span>
         )}
