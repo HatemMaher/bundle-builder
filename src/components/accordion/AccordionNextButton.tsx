@@ -1,9 +1,13 @@
+/**
+ * Props interface for the AccordionNextButton component.
+ */
 interface AccordionNextButtonProps {
   label: string;
   onClick?: () => void;
   disabled?: boolean;
 }
 
+// AccordionNextButton Component
 const AccordionNextButton = ({
   label,
   onClick,

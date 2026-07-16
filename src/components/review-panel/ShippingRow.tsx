@@ -1,8 +1,16 @@
+/**
+ * Props interface for the ShippingRow component.
+ */
 interface ShippingRowProps {
   originalPrice?: number;
   shippingPrice?: string;
 }
 
+/**
+ * ShippingRow Component
+ * * A static promotional line item highlighting free fast shipping.
+ * Contains the inline SVG for the fast shipping icon.
+ */
 const ShippingRow = ({
   originalPrice = 5.99,
   shippingPrice = "FREE",
@@ -10,7 +18,7 @@ const ShippingRow = ({
   return (
     <div className="flex w-full justify-between border-t border-[#CED6DE] !py-3">
       
-      {/* Left */}
+      {/* Left Column: Icon and Label */}
       <div className="flex items-center gap-[12px]">
         
         {/* Replaced the emoji div with the exact Figma SVG */}
@@ -27,7 +35,7 @@ const ShippingRow = ({
         </span>
       </div>
 
-      {/* Right */}
+      {/* Right Column: Pricing Stack */}
       <div className="flex flex-col items-end justify-center">
         <span className="text-[14px] font-medium text-[#6F7882] line-through">
           ${originalPrice.toFixed(2)}

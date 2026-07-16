@@ -2,10 +2,17 @@ import { products } from "../../data/products";
 import type { ProductCategory } from "../../types";
 import ProductCard from "./ProductCard";
 
+/**
+ * Props interface for the ProductGrid component.
+ */
 interface ProductGridProps {
   category: ProductCategory;
 }
 
+/**
+ * ProductGrid Component
+ * * A responsive CSS grid container that renders filtered product cards based on the active step.
+ */
 const ProductGrid = ({ category }: ProductGridProps) => {
   // Filter products so we only map over the ones that belong in this specific step
   const filteredProducts = products.filter((p) => p.category === category);

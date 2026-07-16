@@ -1,12 +1,19 @@
+/**
+ * ReviewHeader Component
+ * * A static, purely presentational component establishing the semantic <header>
+ * for the review sidebar, containing the primary heading and descriptive text.
+ */
 const ReviewHeader = () => {
   return (
     <header className="flex flex-col ">
+      {/* Eyebrow text / Label */}
       <div className="flex items-center">
         <span className="!py-4 text-[12px] font-medium tracking-[1.6px] uppercase text-[#484848] leading-[100%]">
           Review
         </span>
       </div>
-
+      
+      {/* Main Title & Subtitle */}
       <div className="flex flex-col gap-[10px]">
         <h2 className="text-[22px] font-semibold leading-[22px] tracking-[0.6px] text-[#1F1F1F]">
           Your security system

@@ -1,9 +1,16 @@
 import type { ComponentType } from "react";
 
+/**
+ * Common props interface applied to all SVG icon components in this file.
+ */
 interface IconProps {
   className?: string;
 }
 
+/**
+ * Defines the valid step numbers for the accordion.
+ * Used to strictly type the icon mapping dictionary below.
+ */
 export type AccordionStep = 1 | 2 | 3 | 4;
 
 /* ===========================================

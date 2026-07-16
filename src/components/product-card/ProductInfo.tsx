@@ -1,9 +1,16 @@
+/**
+ * Props interface for the ProductInfo component.
+ */
 interface ProductInfoProps {
   title: string;
   description: string;
   learnMoreUrl?: string;
 }
 
+/**
+ * ProductInfo Component
+ * * Renders the core textual information (title, description, and link) of a product card.
+ */
 const ProductInfo = ({
   title,
   description,

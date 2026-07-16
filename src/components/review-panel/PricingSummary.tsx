@@ -1,15 +1,25 @@
 import GuaranteeBadge from "./GuaranteeBadge";
 
+/**
+ * Props interface for the PricingSummary component.
+ */
 interface PricingSummaryProps {
   subtotal: number;
   originalTotal: number;
 }
 
+/**
+ * PricingSummary Component
+ * * A highly responsive layout component that displays the guarantee badge, 
+ * marketing copy, and the final price calculation.
+ */
 const PricingSummary = ({ subtotal, originalTotal }: PricingSummaryProps) => {
   return (
-    // Default (Mobile): Side-by-side (flex-row)
-    // Tablet (md): Stacked vertically (flex-col)
-    // Desktop (xl): Back to Side-by-side (flex-row)
+    /* RESPONSIVE LAYOUT MATRIX:
+       Default (Mobile): flex-row (Side-by-side: Badge Left, Price Right)
+       Tablet (md): flex-col (Stacked: Badge/Text Top, Price Bottom)
+       Desktop (xl): flex-row (Back to side-by-side for the narrow sidebar)
+    */
     <div className="flex w-full flex-row items-center justify-between md:flex-col md:items-stretch md:gap-[20px] xl:flex-row xl:items-center xl:justify-between xl:gap-0">
       
       {/* === LEFT SIDE (Mobile/Desktop) / TOP ROW (Tablet) === */}
@@ -38,7 +48,7 @@ const PricingSummary = ({ subtotal, originalTotal }: PricingSummaryProps) => {
       */}
       <div className="flex flex-col items-end justify-center gap-[8px] md:w-full md:flex-row md:items-center md:justify-between md:gap-0 xl:w-auto xl:flex-col xl:items-end xl:justify-center xl:gap-[8px]">
         
-        {/* "As low as" Badge */}
+        {/* "As low as" Promotional Badge */}
         <div className="flex items-center justify-center rounded-[3px] bg-[#4E2FD2] !px-[8px] !py-[3px]">
           <span className="text-[12px] font-medium leading-[15px] tracking-[-0.05em] text-[#FFFFFF]">
             as low as $19.19/mo

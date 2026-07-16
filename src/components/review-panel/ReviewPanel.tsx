@@ -11,9 +11,16 @@ import ShippingRow from "./ShippingRow";
 
 const SHIPPING_PRICE = 5.99;
 
+/**
+ * ReviewPanel Component
+ * * The main sidebar container acting as the cart summary.
+ * Extensively uses `useMemo` to compute derived state (cart items, totals, categories)
+ * efficiently whenever the global builder state changes.
+ */
 const ReviewPanel = () => {
   const { state, dispatch, saveState } = useBuilder();
 
+  // Unified dispatch handler for inline quantity steppers within the review items
   const handleUpdateQuantity = (productId: string, variantId: string, quantity: number) => {
     dispatch({
       type: "UPDATE_QUANTITY",
@@ -23,6 +30,11 @@ const ReviewPanel = () => {
     });
   };
 
+  /**
+   * Complex derived state computation:
+   * Maps over the static product list, checks against the active state.selectedVariants,
+   * and flattens them into a clean array of purely selected item objects with pre-calculated totals.
+   */
   const selectedProducts = useMemo(() => {
     return products.flatMap((product) => {
       const variants = state.selectedVariants[product.id];
@@ -50,18 +62,22 @@ const ReviewPanel = () => {
     });
   }, [state.selectedVariants]);
 
+  // Derived subtotal aggregation
   const subtotal = useMemo(
     () => selectedProducts.reduce((sum, item) => sum + item.total, 0),
     [selectedProducts]
   );
 
+  // Derived MSRP total aggregation
   const originalTotal = useMemo(
     () => selectedProducts.reduce((sum, item) => sum + item.compareTotal, 0),
     [selectedProducts]
   );
 
+  // Calculates net savings including the assumption of free shipping (hence adding SHIPPING_PRICE back)
   const savings = originalTotal - subtotal + SHIPPING_PRICE;
 
+  // Groups the flattened cart items into distinct UI sections
   const grouped = {
     camera: selectedProducts.filter((p) => p.category === "camera"),
     sensor: selectedProducts.filter((p) => p.category === "sensor"),
@@ -71,11 +87,10 @@ const ReviewPanel = () => {
 
   return (
     <aside className="rounded-[10px] bg-[#EDF4FF]">
-      {/* 
-        RESPONSIVE GRID MAGIC:
-        Mobile: grid-cols-1 (Stacked)
-        Tablet: md:grid-cols-2 (Side-by-side)
-        Desktop: xl:grid-cols-1 (Stacked in the narrow sidebar)
+      {/* RESPONSIVE GRID MAGIC:
+        Mobile: grid-cols-1 (Stacked: Items on top, Summary on bottom)
+        Tablet: md:grid-cols-2 (Side-by-side: Items left, Summary right)
+        Desktop: xl:grid-cols-1 (Stacked again to fit the narrow fixed-width aside)
       */}
       <div className="!px-5 !py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-[24px] md:gap-[40px] ">
         
@@ -83,6 +98,7 @@ const ReviewPanel = () => {
         <div className="flex flex-col gap-[24px]">
           <ReviewHeader />
 
+          {/* Iterate through groups, conditionally showing an empty state if no items are selected */}
           <ReviewSection title="CAMERAS">
             {grouped.camera.length === 0 ? (
               <span className="text-[15px] font-medium text-[#8A94A6]">No cameras selected.</span>

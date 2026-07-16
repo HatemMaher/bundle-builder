@@ -4,6 +4,9 @@ import type { ProductVariant } from "../../types";
 
 import VariantButton from "./VariantButton";
 
+/**
+ * Props interface for the VariantSelector component.
+ */
 interface VariantSelectorProps {
   productId: string;
   variants: ProductVariant[];
@@ -11,6 +14,12 @@ interface VariantSelectorProps {
   productImage?: string;
 }
 
+/**
+ * VariantSelector Component
+ * * A container that renders a list of interactive VariantButtons (e.g., color or style options).
+ * It connects to the global builder context to dispatch state updates when a user 
+ * switches between product variations.
+ */
 const VariantSelector = ({
   productId,
   variants,
@@ -28,6 +37,7 @@ const VariantSelector = ({
         gap-[6px]
       "
     >
+      {/* Iterate through the provided variants and render an interactive button for each */}
       {variants.map((variant) => (
         <VariantButton
           key={variant.id}

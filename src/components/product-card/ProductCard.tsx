@@ -6,23 +6,36 @@ import ProductInfo from "./ProductInfo";
 import ProductBadge from "./ProductBadge";
 import VariantSelector from "../variant-selector/VariantSelector";
 
+/**
+ * Props interface for the main ProductCard component.
+ */
 interface ProductCardProps {
   product: Product;
 }
 
+/**
+ * ProductCard Component
+ * * The primary interactive component for selecting items in the builder.
+ * It connects to the global builder state to track selection quantities and active variants,
+ * and handles complex responsive layouts across mobile, tablet, and desktop.
+ */
 const ProductCard = ({ product }: ProductCardProps) => {
   const { state, dispatch } = useBuilder();
 
+  // Derive the active variant from global state, fallback to the first variant, or "default"
   const activeVariant =
     state.activeVariant[product.id] ??
     product.variants?.[0]?.id ??
     "default";
 
+  // Check the global state to see how many of this specific product+variant the user has selected
   const quantity =
     state.selectedVariants[product.id]?.[activeVariant] ?? 0;
 
+  // Boolean flag used to style the card border if the user has added it to their bundle
   const isSelected = quantity > 0;
 
+  // Action handlers to dispatch global state updates
   const increaseQuantity = () => {
     dispatch({
       type: "UPDATE_QUANTITY",
@@ -65,7 +78,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         }
       `}
     >
-      {/* THE BADGE: Pinned to the top left. On desktop, 11px perfectly aligns it with the padding edge! */}
+      {/* THE BADGE: Pinned absolutely relative to the article container. Responsive positioning applied. */}
       {product.badge && (
         <div className="absolute left-[10px] top-[10px] z-10 md:left-[16px] md:top-[16px] xl:left-[11px] xl:top-[11px]">
           <ProductBadge label={product.badge} />

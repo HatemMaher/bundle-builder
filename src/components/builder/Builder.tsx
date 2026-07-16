@@ -6,11 +6,23 @@ import { getBuilderSteps } from "./builderSteps";
 import type { ProductCategory } from "../../types";
 import { products } from "../../data/products";
 
+
+/**
+ * Builder Component
+ * * Acts as the main orchestrator for the step-by-step product selection flow.
+ * It manages which accordion step is currently open and calculates real-time 
+ * selection metrics based on the global builder state.
+ */
 const Builder = () => {
   const { state } = useBuilder();
   const [openStep, setOpenStep] = useState<1 | 2 | 3 | 4>(1);
 
-  // Helper to dynamically count distinct products selected per category
+  /**
+   * Helper function to dynamically calculate how many distinct products 
+   * a user has selected within a specific category.
+   * * @param category - The product category to filter by (e.g., "camera", "plan")
+   * @returns The total number of distinct products selected in that category.
+   */
   const getSelectedCountForCategory = (category: ProductCategory) => {
     return products
       .filter((p) => p.category === category)
@@ -21,6 +33,10 @@ const Builder = () => {
       }, 0);
   };
 
+  /**
+   * Maps the current accordion step number to its respective product category 
+   * to fetch the accurate selection count for the AccordionItem header.
+   */
   const getSelectedCount = (step: number) => {
     switch (step) {
       case 1: return getSelectedCountForCategory("camera");
@@ -31,7 +47,7 @@ const Builder = () => {
     }
   };
 
-  // Pass the setOpenStep function into the steps definition so the Next buttons work
+  // Fetch the configuration for each step (title, step number, and the UI content grid)
   const steps = getBuilderSteps();
 
   return (

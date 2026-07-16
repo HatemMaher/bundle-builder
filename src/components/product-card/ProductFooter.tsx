@@ -2,6 +2,10 @@ import type { Product } from "../../types";
 import QuantityStepper from "../quantity-stepper/QuantityStepper";
 import ProductPrice from "./ProductPrice";
 
+
+/**
+ * Props interface for the ProductFooter component.
+ */
 interface ProductFooterProps {
   product: Product;
   quantity: number;
@@ -9,6 +13,12 @@ interface ProductFooterProps {
   onDecrease: () => void;
 }
 
+/**
+ * ProductFooter Component
+ * * Renders the bottom action row of the product card.
+ * Handles the logic of displaying either a quantity stepper (for physical goods)
+ * or a toggle button (for subscription plans).
+ */
 const ProductFooter = ({
   product,
   quantity,

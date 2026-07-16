@@ -1,8 +1,14 @@
+//Props interface for the AccordionStep indicator component.
 interface AccordionStepProps {
   step: number;
   totalSteps?: number;
 }
 
+/**
+ * AccordionStep Component
+ * * A small visual indicator displaying the current progress in the builder flow (e.g., "STEP 1 OF 4").
+ * Designed to look like a subtle UI label rather than interactive text.
+ */
 const AccordionStep = ({
   step,
   totalSteps = 4,

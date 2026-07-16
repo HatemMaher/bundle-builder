@@ -1,9 +1,16 @@
+/**
+ * Props interface for the ProductPrice component.
+ */
 interface ProductPriceProps {
   price: number;
   compareAtPrice?: number;
   suffix?: string;
 }
 
+/**
+ * ProductPrice Component
+ * * Handles the display of pricing, including conditional rendering of struck-through MSRPs if a discount exists.
+ */
 const ProductPrice = ({ price, compareAtPrice, suffix = "" }: ProductPriceProps) => {
   const hasDiscount = compareAtPrice !== undefined && compareAtPrice > price;
 

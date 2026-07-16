@@ -1,3 +1,6 @@
+/**
+ * Props interface for the VariantButton component.
+ */
 interface VariantButtonProps {
   image: string;
   name: string;
@@ -5,6 +8,12 @@ interface VariantButtonProps {
   onClick: () => void;
 }
 
+/**
+ * VariantButton Component
+ * * A small, interactive pill/button used to toggle between different product variants.
+ * Features distinct styling for mobile/tablet vs. desktop (via 'xl:' prefixes) 
+ * and dynamic active states to give the user clear visual feedback.
+ */
 const VariantButton = ({ image, name, selected, onClick }: VariantButtonProps) => {
   return (
     <button
@@ -21,10 +30,12 @@ const VariantButton = ({ image, name, selected, onClick }: VariantButtonProps) =
         }
       `}
     >
+      {/* Variant Thumbnail Wrapper */}
       <div className="flex h-[16px] w-[16px] xl:h-[22px] xl:w-[22px] shrink-0 items-center justify-center overflow-hidden rounded-full xl:rounded-[5px]">
          <img src={image} alt={name} className="h-full w-full object-cover" />
       </div>
 
+      {/* Variant Name Label */}
       <span className={`text-[12px] xl:text-[10px] leading-none ${selected ? 'font-bold xl:font-medium text-[#1F1F1F]' : 'font-medium text-[#6F7882] xl:text-[#1F1F1F]'}`}>
         {name}
       </span>

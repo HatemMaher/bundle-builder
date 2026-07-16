@@ -1,3 +1,6 @@
+/**
+ * Props interface for the ReviewItem component.
+ */
 interface ReviewItemProps {
   id: string;
   image: string;
@@ -11,6 +14,12 @@ interface ReviewItemProps {
   onDecrease: () => void;
 }
 
+/**
+ * ReviewItem Component
+ * * Renders an individual line item in the cart/review panel.
+ * Contains significant conditional logic to alter its layout completely if the item
+ * is identified as a digital Plan rather than a physical product.
+ */
 const ReviewItem = ({
   image,
   title,
@@ -28,10 +37,11 @@ const ReviewItem = ({
   return (
     <div className="flex w-full">
       
-      {/* Image & Text Wrapper */}
+      {/* === LEFT SIDE: Image & Text Wrapper === */}
+      {/* min-w-0 prevents flexbox children from overflowing their container when text truncates */}
       <div className="flex flex-1 items-center gap-[16px] min-w-0">
         
-        {/* Physical Products: 40x40 white container. Hidden for the plan! */}
+        {/* CONDITIONAL RENDER: Physical Products get a 40x40 white thumbnail container. Hidden for the plan! */}
         {!isPlan && (
           <div className="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-[6px] bg-[#FFFFFF] border border-[#E4E9EF]">
             {image ? (
@@ -42,10 +52,10 @@ const ReviewItem = ({
           </div>
         )}
 
-        {/* Text Area */}
+        {/* Text Area: If it's a plan, stack text horizontally with the SVG. If physical, stack Title/Subtitle vertically. */}
         <div className={`flex min-w-0 ${isPlan ? "flex-row items-center gap-[6px]" : "flex-col"}`}>
           
-          {/* THE SVG: Visible only for the Plan */}
+          {/* THE PLAN SVG: Injected inline and visible ONLY for the subscription plan */}
           {isPlan && (
             <div className="flex shrink-0 items-center justify-center">
               <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -109,7 +119,7 @@ const ReviewItem = ({
           </div>
         )}
 
-        {/* Pricing - Figma Stacked Right Alignment */}
+        {/* Pricing Layout */}
         <div className="flex flex-col items-end justify-center min-w-[55px]">
           {compareAtPrice && compareAtPrice > price && (
             <span className="text-[11px] font-medium text-[#6F7882] line-through mb-[2px]">

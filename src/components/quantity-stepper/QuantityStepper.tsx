@@ -1,9 +1,19 @@
+
+/**
+ * Props interface for the QuantityStepper component.
+ */
 interface QuantityStepperProps {
   quantity: number;
   onIncrease: () => void;
   onDecrease: () => void;
 }
 
+/**
+ * QuantityStepper Component
+ * * A reusable, accessible UI control for adjusting product quantities.
+ * Features responsive sizing (larger touch targets on mobile, compact on desktop),
+ * interactive hover/active states, and disabled state management.
+ */
 const QuantityStepper = ({
   quantity,
   onIncrease,
@@ -11,7 +21,8 @@ const QuantityStepper = ({
 }: QuantityStepperProps) => {
   return (
     <div className="inline-flex items-center gap-[12px] xl:gap-[10px] select-none">
-      
+     
+     {/* DECREASE BUTTON */} 
       <button
         type="button"
         onClick={onDecrease}
@@ -29,11 +40,13 @@ const QuantityStepper = ({
           −
         </span>
       </button>
-
+      
+      {/* QUANTITY DISPLAY */}
       <span className="min-w-[24px] xl:min-w-[11px] text-center text-[16px] font-semibold leading-none text-[#0B0D10]">
         {quantity}
       </span>
 
+      {/* INCREASE BUTTON */}
       <button
         type="button"
         onClick={onIncrease}
